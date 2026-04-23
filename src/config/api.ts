@@ -2,6 +2,8 @@ import axios from 'axios';
 
 import { useAuthStore } from '@/store/useAuthStore';
 
+import { getRevalidator } from './revalidator';
+
 export const api = axios.create({
   baseURL: import.meta.env.VITE_API_URL,
 });
@@ -22,6 +24,10 @@ api.interceptors.response.use(
     return response;
   },
   (error) => {
+    if (error.response?.status === 401) {
+      useAuthStore.getState().logout();
+      getRevalidator()?.revalidate();
+    }
     return Promise.reject(error);
   }
 );
