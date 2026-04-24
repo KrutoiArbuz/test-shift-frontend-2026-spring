@@ -49,7 +49,7 @@ const baseTheme = createTheme({
     text: {
       primary: colors.textPrimary,
       secondary: colors.textSecondary,
-      disabled: colors.textTertiary,
+      disabled: colors.textQuaternary,
     },
   },
 
@@ -154,7 +154,9 @@ const baseTheme = createTheme({
         },
         input: {
           padding: '12px 12px',
-          color: colors.textPrimary,
+          '&:disabled': {
+            WebkitTextFillColor: colors.textTertiary,
+          },
         },
       },
     },

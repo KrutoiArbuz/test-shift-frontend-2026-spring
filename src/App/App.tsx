@@ -1,3 +1,4 @@
+import { Box, Container } from '@mui/material';
 import { useEffect } from 'react';
 import { Outlet, useRevalidator } from 'react-router';
 
@@ -11,7 +12,23 @@ function App() {
     return () => setRevalidator(null);
   }, [revalidator.revalidate]);
 
-  return <Outlet />;
+  return (
+    <Box
+      sx={{
+        display: 'flex',
+        flexDirection: 'column',
+        minHeight: '100vh',
+        bgcolor: 'background.default',
+      }}
+    >
+      <Container
+        maxWidth="lg"
+        sx={{ display: 'flex', flexDirection: 'column', flex: 1, px: 2, py: 12 }}
+      >
+        <Outlet />
+      </Container>
+    </Box>
+  );
 }
 
 export default App;
