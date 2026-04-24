@@ -22,7 +22,7 @@ npm install
 **2. Создайте `.env` файл:**
 
 ```
-VITE_API_URL=https://shift-intensive.ru/api
+VITE_API_URL=https://juniorsbootcamp.ru/api
 ```
 
 **3. Запустите dev-сервер:**
