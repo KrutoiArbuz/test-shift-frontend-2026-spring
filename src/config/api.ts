@@ -28,6 +28,7 @@ api.interceptors.response.use(
       useAuthStore.getState().logout();
       getRevalidator()?.revalidate();
     }
-    return Promise.reject(error);
+    const reason = error.response?.data?.reason;
+    return Promise.reject(reason ? new Error(reason) : error);
   }
 );
